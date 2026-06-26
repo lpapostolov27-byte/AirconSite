@@ -1,0 +1,163 @@
+{% extends "base.html" %}
+{% block title %}Контакти — КлиматТех{% endblock %}
+{% block extra_css %}
+<style>
+.contact-hero{background:linear-gradient(135deg,#064E8A,#0A6EBD);padding:64px 28px;text-align:center}
+.contact-hero h1{font-size:42px;font-weight:900;color:#fff;margin-bottom:12px}
+.contact-hero p{font-size:17px;color:rgba(255,255,255,0.8);max-width:520px;margin:0 auto}
+
+.contact-section{padding:72px 28px}
+.contact-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:48px;align-items:start}
+
+.info-cards{display:flex;flex-direction:column;gap:16px}
+.info-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:22px;display:flex;gap:16px;align-items:flex-start;box-shadow:var(--shadow);transition:transform .2s}
+.info-card:hover{transform:translateY(-3px)}
+.info-card-icon{width:48px;height:48px;background:var(--blue-light);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.info-card-title{font-size:13px;font-weight:700;color:var(--text-dim);text-transform:uppercase;letter-spacing:.5px;margin-bottom:5px}
+.info-card-val{font-size:15px;font-weight:600;color:var(--text)}
+.info-card-sub{font-size:13px;color:var(--text-dim);margin-top:3px}
+
+.form-card{background:var(--white);border:1px solid var(--border);border-radius:20px;padding:36px;box-shadow:var(--shadow)}
+.form-title{font-size:22px;font-weight:800;margin-bottom:6px}
+.form-sub{font-size:14px;color:var(--text-dim);margin-bottom:28px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.field{margin-bottom:16px}
+.field label{font-size:13px;font-weight:600;color:var(--text);display:block;margin-bottom:6px}
+.field input,.field textarea,.field select{background:var(--gray);color:var(--text);border:1.5px solid var(--border);border-radius:10px;padding:12px 16px;font-size:14px;width:100%;outline:none;transition:border .15s;font-family:inherit}
+.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--blue);background:var(--white)}
+.field textarea{resize:vertical;min-height:130px}
+.field.full{grid-column:1/-1}
+.submit-btn{background:linear-gradient(135deg,var(--blue),#0AABF0);color:#fff;border:none;border-radius:10px;padding:14px 28px;font-size:15px;font-weight:700;cursor:pointer;width:100%;transition:all .2s;font-family:inherit}
+.submit-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(10,110,189,0.3)}
+.form-note{font-size:12px;color:var(--text-dim);text-align:center;margin-top:12px}
+
+.map-placeholder{background:var(--gray);border:1px solid var(--border);border-radius:16px;height:220px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;color:var(--text-dim);margin-top:16px}
+.map-placeholder span{font-size:32px}
+
+.hours-card{background:var(--blue-light);border:1px solid rgba(10,110,189,0.15);border-radius:14px;padding:22px;margin-top:16px}
+.hours-title{font-size:13px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.5px;margin-bottom:14px}
+.hours-row{display:flex;justify-content:space-between;font-size:13px;padding:6px 0;border-bottom:1px solid rgba(10,110,189,0.1)}
+.hours-row:last-child{border-bottom:none}
+.hours-day{color:var(--text-dim)}
+.hours-time{font-weight:600;color:var(--text)}
+
+@media(max-width:768px){
+  .contact-grid{grid-template-columns:1fr}
+  .form-grid{grid-template-columns:1fr}
+  .contact-hero h1{font-size:30px}
+}
+</style>
+{% endblock %}
+{% block content %}
+
+<div class="contact-hero">
+  <h1>Свържете се с Нас</h1>
+  <p>Готови за безплатна оферта? Попълнете формата и ще се свържем с вас в рамките на 24 часа.</p>
+</div>
+
+<section class="contact-section">
+  <div class="container">
+    <div class="contact-grid">
+      <div>
+        <div class="info-cards">
+          <div class="info-card">
+            <div class="info-card-icon">📞</div>
+            <div>
+              <div class="info-card-title">Телефон</div>
+              <div class="info-card-val"><a href="tel:089 383 6898" style="color:var(--blue)">089 383 6898</a></div>
+              <div class="info-card-sub">Достъпни Пон–Неделя 8:00–18:00</div>
+            </div>
+          </div>
+          <div class="info-card">
+            <div class="info-card-icon">✉️</div>
+            <div>
+              <div class="info-card-title">Имейл</div>
+              <div class="info-card-val"><a href="mailto:info@firma.bg" style="color:var(--blue)">info@firma.bg</a></div>
+              <div class="info-card-sub">Отговаряме в рамките на 24 часа</div>
+            </div>
+          </div>
+          <div class="info-card">
+            <div class="info-card-icon">📍</div>
+            <div>
+              <div class="info-card-title">Адрес</div>
+              <div class="info-card-val">Вашият Адрес</div>
+              <div class="info-card-sub">Вашият Град, България</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hours-card">
+          <div class="hours-title">🕐 Работно Време</div>
+          <div class="hours-row"><span class="hours-day">Понеделник – Петък</span><span class="hours-time">08:00 – 18:00</span></div>
+          <div class="hours-row"><span class="hours-day">Събота</span><span class="hours-time">09:00 – 14:00</span></div>
+          <div class="hours-row"><span class="hours-day">Неделя</span><span class="hours-time">Почивен ден</span></div>
+        </div>
+
+        <div class="map-placeholder">
+          <span>🗺️</span>
+          <p>Тук ще бъде Google Карта</p>
+          <p style="font-size:11px">Поставете вашия Google Maps iframe тук</p>
+        </div>
+      </div>
+
+      <div class="form-card">
+        <div class="form-title">Заявете Безплатна Оферта</div>
+        <div class="form-sub">Попълнете данните си и ще изготвим персонална оферта за вашия имот.</div>
+        <form method="POST">
+          <div class="form-grid">
+            <div class="field">
+              <label>Вашето Име *</label>
+              <input type="text" name="name" placeholder="Иван Петров" required />
+            </div>
+            <div class="field">
+              <label>Телефонен Номер *</label>
+              <input type="tel" name="phone" placeholder="+359 000 000 000" required />
+            </div>
+            <div class="field">
+              <label>Имейл Адрес</label>
+              <input type="email" name="email" placeholder="ivan@email.com" />
+            </div>
+            <div class="field">
+              <label>Тип Имот</label>
+              <select name="property_type">
+                <option>Дом / Апартамент</option>
+                <option>Офис</option>
+                <option>Магазин / Ресторант</option>
+                <option>Склад</option>
+                <option>Друго</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>Необходима Услуга</label>
+              <select name="service">
+                <option>Нов Монтаж</option>
+                <option>Поддръжка / Сервиз</option>
+                <option>Ремонт</option>
+                <option>Диагностика</option>
+                <option>Не съм сигурен — Нуждая се от съвет</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>Брой Стаи</label>
+              <select name="rooms">
+                <option>1 Стая</option>
+                <option>2–3 Стаи</option>
+                <option>4–5 Стаи</option>
+                <option>6+ Стаи</option>
+                <option>Цяла Сграда</option>
+              </select>
+            </div>
+            <div class="field full">
+              <label>Допълнителна Информация</label>
+              <textarea name="message" placeholder="Разкажете ни повече за вашия имот, текущата система или специфични изисквания..."></textarea>
+            </div>
+          </div>
+          <button type="submit" class="submit-btn">Изпратете Заявка →</button>
+          <div class="form-note">🔒 Вашата информация е защитена. Без спам, никога.</div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
