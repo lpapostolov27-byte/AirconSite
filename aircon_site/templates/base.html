@@ -3,145 +3,154 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{% block title %}КлиматТех — Професионален Монтаж на Климатици{% endblock %}</title>
+<title>{% block title %}SGComfort — Климатици за Дома и Бизнеса{% endblock %}</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
 <style>
 :root {
-  --blue:      #0A6EBD;
-  --blue-dark: #064E8A;
-  --blue-light:#E8F4FF;
-  --ice:       #D6EEFF;
   --white:     #FFFFFF;
-  --gray:      #F5F7FA;
-  --text:      #1A2332;
-  --text-dim:  #5A6A7E;
-  --border:    #DDE4EE;
-  --shadow:    0 4px 24px rgba(10,110,189,0.10);
+  --off:       #F7F9FC;
+  --blue:      #1A6FD4;
+  --blue-mid:  #2580E8;
+  --blue-light:#E8F2FD;
+  --blue-pale: #F0F7FF;
+  --navy:      #0D2952;
+  --text:      #111827;
+  --mid:       #374151;
+  --dim:       #6B7280;
+  --border:    #E5EAF2;
+  --ice:       #D1E8FF;
+  --shadow-sm: 0 1px 4px rgba(17,24,39,0.06);
+  --shadow:    0 4px 20px rgba(17,24,39,0.08);
+  --shadow-lg: 0 12px 48px rgba(17,24,39,0.12);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:'Segoe UI',system-ui,sans-serif;color:var(--text);background:var(--white);line-height:1.6}
+body{font-family:'Inter',system-ui,sans-serif;color:var(--text);background:var(--white);line-height:1.6;-webkit-font-smoothing:antialiased}
 a{text-decoration:none;color:inherit}
 img{max-width:100%;display:block}
 
-.navbar{background:var(--white);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,0.06)}
-.nav-inner{max-width:1200px;margin:0 auto;padding:0 28px;height:68px;display:flex;align-items:center;justify-content:space-between}
+/* ── Navbar ── */
+.navbar{background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;transition:box-shadow .2s}
+.navbar.scrolled{box-shadow:var(--shadow)}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 32px;height:72px;display:flex;align-items:center;justify-content:space-between}
 .nav-logo{display:flex;align-items:center;gap:10px}
-.nav-logo-icon{width:40px;height:40px;background:linear-gradient(135deg,var(--blue),#0AABF0);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px}
-.nav-logo-text{font-size:20px;font-weight:800;color:var(--text)}
+.nav-logo-mark{width:38px;height:38px;background:linear-gradient(135deg,var(--blue),#38B2F5);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:19px;box-shadow:0 2px 8px rgba(26,111,212,0.3)}
+.nav-logo-text{font-family:'Plus Jakarta Sans',sans-serif;font-size:19px;font-weight:800;color:var(--navy)}
 .nav-logo-text span{color:var(--blue)}
-.nav-links{display:flex;align-items:center;gap:6px}
-.nav-links a{color:var(--text-dim);font-size:14px;font-weight:500;padding:8px 14px;border-radius:8px;transition:all .15s}
-.nav-links a:hover{color:var(--blue);background:var(--blue-light)}
-.nav-cta{background:var(--blue);color:var(--white)!important;border-radius:8px;padding:9px 20px!important;font-weight:600!important}
-.nav-cta:hover{background:var(--blue-dark)!important;color:var(--white)!important}
+.nav-links{display:flex;align-items:center;gap:2px}
+.nav-links a{color:var(--mid);font-size:14px;font-weight:500;padding:8px 16px;border-radius:8px;transition:all .15s}
+.nav-links a:hover{color:var(--blue);background:var(--blue-pale)}
+.nav-phone{display:flex;align-items:center;gap:8px;background:var(--blue);color:#fff!important;padding:9px 20px;border-radius:10px;font-size:14px;font-weight:600;transition:all .15s;box-shadow:0 2px 8px rgba(26,111,212,0.25)}
+.nav-phone:hover{background:var(--navy)!important;color:#fff!important;transform:translateY(-1px)}
 
-.btn{display:inline-block;padding:13px 28px;border-radius:10px;font-size:15px;font-weight:600;cursor:pointer;border:none;transition:all .15s;font-family:inherit}
-.btn:hover{transform:translateY(-1px);box-shadow:var(--shadow)}
-.btn-primary{background:var(--blue);color:var(--white)}
-.btn-primary:hover{background:var(--blue-dark)}
+/* ── Buttons ── */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 28px;border-radius:10px;font-size:15px;font-weight:600;cursor:pointer;border:none;transition:all .2s;font-family:inherit}
+.btn-primary{background:var(--blue);color:#fff;box-shadow:0 2px 12px rgba(26,111,212,0.3)}
+.btn-primary:hover{background:var(--navy);transform:translateY(-2px);box-shadow:0 8px 24px rgba(26,111,212,0.35)}
+.btn-ghost{background:rgba(255,255,255,0.15);color:#fff;border:1.5px solid rgba(255,255,255,0.4);backdrop-filter:blur(8px)}
+.btn-ghost:hover{background:rgba(255,255,255,0.25);transform:translateY(-2px)}
 .btn-outline{background:transparent;color:var(--blue);border:2px solid var(--blue)}
-.btn-outline:hover{background:var(--blue);color:var(--white)}
-.btn-white{background:var(--white);color:var(--blue)}
-.btn-white:hover{background:var(--ice)}
+.btn-outline:hover{background:var(--blue);color:#fff;transform:translateY(-2px)}
 
-.section{padding:80px 28px}
+/* ── Layout ── */
+.section{padding:88px 32px}
 .container{max-width:1200px;margin:0 auto}
-.section-label{font-size:12px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:2px;margin-bottom:12px}
-.section-title{font-size:38px;font-weight:800;line-height:1.2;margin-bottom:16px;color:var(--text)}
-.section-sub{font-size:16px;color:var(--text-dim);max-width:560px;line-height:1.7}
+.eyebrow{font-size:12px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:2.5px;margin-bottom:14px}
+.section-title{font-family:'Plus Jakarta Sans',sans-serif;font-size:40px;font-weight:800;line-height:1.15;margin-bottom:18px;color:var(--navy)}
+.section-sub{font-size:17px;color:var(--dim);max-width:540px;line-height:1.75}
 .text-center{text-align:center}
 .text-center .section-sub{margin:0 auto}
 
-.card{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:28px;box-shadow:var(--shadow);transition:transform .2s,box-shadow .2s}
-.card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(10,110,189,0.14)}
-
-.footer{background:var(--text);color:#A0AABB;padding:56px 28px 28px}
+/* ── Footer ── */
+.footer{background:var(--navy);color:#8BA4C8;padding:64px 32px 32px}
 .footer-inner{max-width:1200px;margin:0 auto}
-.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;margin-bottom:48px}
-.footer-brand-name{font-size:20px;font-weight:800;color:var(--white);margin-bottom:10px}
-.footer-brand-name span{color:#4BC8F5}
-.footer-desc{font-size:13px;line-height:1.8;max-width:280px}
-.footer-title{font-size:12px;font-weight:700;color:var(--white);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:16px}
-.footer-links{display:flex;flex-direction:column;gap:10px}
-.footer-links a,.footer-links span{font-size:13px;color:#A0AABB;transition:color .15s}
-.footer-links a:hover{color:var(--white)}
-.footer-bottom{border-top:1px solid #2A3444;padding-top:24px;display:flex;justify-content:space-between;align-items:center;font-size:12px;flex-wrap:wrap;gap:10px}
-.footer-bottom span{color:#6A7A8E}
-
-.flash{padding:14px 20px;border-radius:10px;margin:16px 0;font-size:14px;font-weight:500}
-.flash.success{background:#E6FAF3;color:#0A7A4A;border:1px solid #B0EDD4}
-.flash.error{background:#FFF0F0;color:#C0392B;border:1px solid #F5BDBD}
+.footer-top{display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr;gap:48px;margin-bottom:56px}
+.footer-logo-mark{width:40px;height:40px;background:linear-gradient(135deg,var(--blue),#38B2F5);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:16px}
+.footer-brand{font-family:'Plus Jakarta Sans',sans-serif;font-size:20px;font-weight:800;color:#fff;margin-bottom:12px}
+.footer-brand span{color:#38B2F5}
+.footer-desc{font-size:13px;line-height:1.85;max-width:260px;color:#7A96B8}
+.footer-col-title{font-size:11px;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:2px;margin-bottom:18px}
+.footer-links{display:flex;flex-direction:column;gap:11px}
+.footer-links a,.footer-links span{font-size:13px;color:#7A96B8;transition:color .15s;line-height:1.5}
+.footer-links a:hover{color:#fff}
+.footer-divider{border:none;border-top:1px solid rgba(255,255,255,0.08);margin-bottom:24px}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:#4A6080;flex-wrap:wrap;gap:10px}
 
 @media(max-width:768px){
-  .section-title{font-size:28px}
-  .footer-grid{grid-template-columns:1fr}
-  .nav-links a:not(.nav-cta){display:none}
+  .section{padding:64px 20px}
+  .section-title{font-size:30px}
+  .footer-top{grid-template-columns:1fr 1fr}
+  .nav-links a:not(.nav-phone){display:none}
+  .nav-inner{padding:0 20px}
 }
 </style>
 {% block extra_css %}{% endblock %}
 </head>
 <body>
 
-<nav class="navbar">
+<nav class="navbar" id="navbar">
   <div class="nav-inner">
     <a href="/" class="nav-logo">
-      <div class="nav-logo-icon">❄️</div>
-      <div class="nav-logo-text">Климат<span>Тех</span></div>
+      <div class="nav-logo-mark">❄️</div>
+      <div class="nav-logo-text">SG<span>Comfort</span></div>
     </a>
     <div class="nav-links">
       <a href="/#услуги">Услуги</a>
-      <a href="/#защо-ние">Защо Ние</a>
+      <a href="/#защо-ние">За нас</a>
       <a href="/#марки">Марки</a>
       <a href="/#отзиви">Отзиви</a>
-      <a href="/contact" class="nav-cta">Безплатна Оферта</a>
+      <a href="/#контакти" class="nav-phone">📞 Обади се</a>
     </div>
   </div>
 </nav>
-
-{% with messages = get_flashed_messages(with_categories=true) %}
-  {% if messages %}
-    <div style="max-width:1200px;margin:0 auto;padding:0 28px">
-      {% for cat, msg in messages %}
-        <div class="flash {{ cat }}">{{ msg }}</div>
-      {% endfor %}
-    </div>
-  {% endif %}
-{% endwith %}
 
 {% block content %}{% endblock %}
 
 <footer class="footer">
   <div class="footer-inner">
-    <div class="footer-grid">
+    <div class="footer-top">
       <div>
-        <div class="footer-brand-name">Климат<span>Тех</span></div>
-        <p class="footer-desc">Професионален монтаж и поддръжка на климатици. Обслужваме домове и бизнеси от [ГОДИНА]. Вашият комфорт е наш приоритет.</p>
+        <div class="footer-logo-mark">❄️</div>
+        <div class="footer-brand">SG<span>Comfort</span></div>
+        <p class="footer-desc">Монтаж, демонтаж, профилактика и ремонт на климатици за домове и бизнеси. Работим 24/7 за вашия комфорт.</p>
       </div>
       <div>
-        <div class="footer-title">Бързи Връзки</div>
+        <div class="footer-col-title">Навигация</div>
         <div class="footer-links">
           <a href="/#услуги">Услуги</a>
-          <a href="/#защо-ние">Защо Ние</a>
+          <a href="/#защо-ние">За нас</a>
           <a href="/#марки">Марки</a>
-          <a href="/contact">Контакти</a>
+          <a href="/#отзиви">Отзиви</a>
         </div>
       </div>
       <div>
-        <div class="footer-title">Контакти</div>
+        <div class="footer-col-title">Контакти</div>
         <div class="footer-links">
-          <a href="tel:+00000000000">📞 089 383 6898</a>
-          <a href="mailto:info@yourcompany.com">✉️ info@firma.bg</a>
+          <a href="tel:+00000000000">📞 +000 000 0000</a>
+          <a href="mailto:info@firma.bg">✉️ info@firma.bg</a>
           <span>📍 Вашият Град, България</span>
-          <span>🕐 Пон–Пет: 8:00 – 18:00</span>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Работно Време</div>
+        <div class="footer-links">
+          <span>Всеки ден: 0 – 24 часа</span>
         </div>
       </div>
     </div>
+    <hr class="footer-divider">
     <div class="footer-bottom">
-      <span>© 2025 КлиматТех. Всички права запазени.</span>
+      <span>© 2025 SGComfort. Всички права запазени.</span>
       <span>Изработено от NexaFlow AI</span>
     </div>
   </div>
 </footer>
 
+<script>
+const nav = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 20);
+});
+</script>
 </body>
 </html>

@@ -1,26 +1,26 @@
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template
 import os
 
 app = Flask(__name__)
-app.secret_key = "aircon-secret-2024"
+
+def load_env():
+    env_path = os.path.join(os.path.dirname(__file__), ".env")
+    if os.path.exists(env_path):
+        with open(env_path, encoding="utf-8") as f:
+            for line in f:
+                line = line.strip()
+                if line and not line.startswith("#") and "=" in line:
+                    k, v = line.split("=", 1)
+                    os.environ.setdefault(k.strip(), v.strip())
+
+load_env()
 
 @app.route("/")
 def index():
     return render_template("index.html")
 
-@app.route("/contact", methods=["GET", "POST"])
-def contact():
-    if request.method == "POST":
-        name    = request.form.get("name")
-        phone   = request.form.get("phone")
-        email   = request.form.get("email")
-        message = request.form.get("message")
-        # TODO: Add email sending logic here
-        flash("Благодарим! Ще се свържем с вас скоро.", "success")
-        return redirect(url_for("contact"))
-    return render_template("contact.html")
-
 if __name__ == "__main__":
-    print("\n✅ AirCon Site started!")
+    port = int(os.environ.get("PORT", 5000))
+    print("\n✅ КлиматТех сайт стартира!")
     print("   http://localhost:5000\n")
-    app.run(debug=False)
+    app.run(host="0.0.0.0", port=port, debug=False)
